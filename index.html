@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario & Andrea</title>
+    <style>
+        :root {
+    --heart-color: #ff5873;
+    --hover-color: #C1275C;
+    --background-color: #ebc8c0;
+    --white: #fff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: var(--heart-color);
+    background-image: url('images/mini-heart.png');
+    background-size: 50%;
+}
+
+.card {
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+}
+
+.title {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.heart {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.button {
+    background-color: var(--heart-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 80px;
+}
+
+.button.button__negative {
+    background-color: var(--white);
+    color: var(--heart-color);
+    border: 1px solid var(--heart-color);
+}
+
+.button.button__error {
+    width: 100%;
+    display: none;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.text {
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <h1 class="title">¿Esta noche: palomitas, matrix y muchos mimos?</h1>
+        <div class="heart">
+            <img src="images.jpg" alt="San Valentín" class="cat img-fluid">
+        </div>
+        <div class="text"></div>
+        <button class="button">SÍ</button>
+        <button class="button button__negative">NO</button>
+        <button class="button button__error">Error, debemos reiniciar</button>
+    </div>
+    <script>
+
+        const heart = document.querySelector('.heart');
+        const text = document.querySelector('.text');
+        const yesButton = document.querySelector('.button');
+        const noButton = document.querySelector('.button.button__negative');
+        const errorButton = document.querySelector('.button.button__error');
+
+yesButton.addEventListener('click', () => {
+    heart.style.display = 'none';
+    text.textContent = '¡Eres lo que siempre he querido!';  
+    yesButton.style.display = 'none';
+    noButton.style.display = 'none';
+});
+
+noButton.addEventListener('click', () => {
+    heart.style.display = 'none';
+    text.textContent = '¡Oh no! Intentemos de nuevo.';
+    errorButton.style.display = 'block';
+});
+
+errorButton.addEventListener('click', () => {
+    heart.style.display = 'block';
+    text.textContent = '';
+    yesButton.style.display = 'block';
+    noButton.style.display = 'block';
+    errorButton.style.display = 'none';
+});
+
+
+
+    </script>
+</body>
+</html>
